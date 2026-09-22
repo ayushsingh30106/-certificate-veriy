@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Certificate Verification</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 35px;
+            font-weight: bold;
+            color: #25215c;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #29235c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1c1745;
+        }
+
+        #result {
+            margin-top: 25px;
+            display: none;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f1f8f3;
+            border: 1px solid #b7dfc0;
+        }
+
+        .details {
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+
+        .invalid {
+            background: #fff1f1 !important;
+            border-color: #e5aaaa !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            CodSoft
+        </div>
+
+        <h1>Certificate Verification</h1>
+
+        <p class="subtitle">
+            Verify the authenticity of your certificate
+        </p>
+
+        <label for="certificateId">
+            Certificate ID
+        </label>
+
+        <input
+            type="text"
+            id="certificateId"
+            placeholder="Enter Certificate ID"
+        >
+
+        <button onclick="verifyCertificate()">
+            Verify Certificate
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+    <script>
+
+        function verifyCertificate() {
+
+            let id = document
+                .getElementById("certificateId")
+                .value
+                .trim();
+
+            let result = document.getElementById("result");
+
+            result.style.display = "block";
+
+            if (id === "849bcc4") {
+
+                result.className = "";
+
+                result.innerHTML = `
+                    <h2>✓ Certificate Verified</h2>
+
+                    <div class="details">
+                        <b>Name:</b> Samar Tiruwa<br>
+
+                        <b>Certificate ID:</b> 849bcc4<br>
+
+                        <b>Program:</b> Artificial Intelligence<br>
+
+                        <b>Duration:</b> 4 Weeks<br>
+
+                        <b>Organization:</b> CODSOFT<br>
+
+                        <b>Start Date:</b> 05/06/2026<br>
+
+                        <b>End Date:</b> 05/07/2026
+                    </div>
+                `;
+
+            } else {
+
+                result.className = "invalid";
+
+                result.innerHTML = `
+                    <h3>✕ Certificate Not Found</h3>
+
+                    <p>
+                        Please check the Certificate ID
+                        and try again.
+                    </p>
+                `;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
